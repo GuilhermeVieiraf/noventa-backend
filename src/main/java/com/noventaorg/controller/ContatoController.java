@@ -1,7 +1,6 @@
 package com.noventaorg.controller;
 
 import com.noventaorg.dto.ContatoDTO;
-import com.noventaorg.model.Contato;
 import com.noventaorg.service.ContatoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
