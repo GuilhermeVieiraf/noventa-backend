@@ -18,8 +18,7 @@ public class Contato {
     private UUID id;
 
     @NotBlank(message = "O nome não pode estar em branco.")
-    @Size(min = 3, max = 100,
-            message = "O nome deve ter entre 3 e 100 caracteres.")
+    @Size(min = 3, max = 100, message = "O nome deve ter entre 3 e 100 caracteres.")
     @Column(length = 100)
     private String nome;
 
