@@ -23,6 +23,7 @@ public class EmailService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(emailRemetente);
         message.setTo(emailDestino);
+        message.setReplyTo(contatoDTO.getEmail());
         message.setSubject("Novo Contato do Site: " + contatoDTO.getAssunto());
         message.setText(
                 "Você recebeu uma nova mensagem de contato:\n\n" +

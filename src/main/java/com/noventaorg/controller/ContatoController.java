@@ -10,16 +10,19 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/contato")
-@CrossOrigin(origins = "*", allowedHeaders = "*") // Permite acesso de qualquer origem para desenvolvimento
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ContatoController {
-
     @Autowired
     private ContatoService contatoService;
-
     @PostMapping
-    public ResponseEntity<Contato> criarContato(@RequestBody @Valid ContatoDTO contatoDTO) {
-        Contato contatoSalvo = contatoService.salvar(contatoDTO);
-        return new ResponseEntity<>(contatoSalvo, HttpStatus.CREATED);
+    public ResponseEntity<String> receberContato(@RequestBody @Valid ContatoDTO contatoDTO) {
+        try {
+            contatoService.processarContato(contatoDTO);
+            return ResponseEntity.ok("Mensagem enviada com sucesso!");
+        } catch (Exception e) {
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Erro ao enviar o email. Por favor, tente novamente mais tarde.");
+        }
     }
-
 }
